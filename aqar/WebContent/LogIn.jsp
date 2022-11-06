@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="Login.css">
 <title></title>
 </head>
 <body>
@@ -20,7 +20,7 @@
           </div>
           
           <div class="btns">
-              <input type="submit" value="Submit" class="btn">
+              <input type="submit" value="Log In" class="btn">
           </div>
     </form>
     <label>don't have an account? <a href = "SignUp.jsp">sign up</a></label>

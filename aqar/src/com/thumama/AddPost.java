@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 @WebServlet("/AddPost")
 @MultipartConfig(maxFileSize = 16177216)
@@ -24,7 +23,6 @@ public class AddPost extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession hs = request.getSession();
-		String username = hs.getAttribute("username").toString();
 		int publisher_id = (int) hs.getAttribute("id");
 		String type = request.getParameter("type");
 		int size = Integer.parseInt(request.getParameter("size"));

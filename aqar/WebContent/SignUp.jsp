@@ -56,7 +56,7 @@
             <input type="password" id="retype" name="retype" required="required" oninput="check(this)">
           </div>
           <div class="btns">
-            <input type="submit" value="Submit" class = "btn">
+            <input type="submit" value="Sign Up" class = "btn">
           </div>
             <label class="foot">already have an account? <a href = "LogIn.jsp">log in</a></label>
             <script language='javascript' type='text/javascript'>
@@ -69,6 +69,12 @@
           }
       </script>
       </form>
+      <%
+		if(session.getAttribute("error")!= null){
+		out.append("<h4 class = \"warning\" style = \"color:red\">"+session.getAttribute("error").toString()+"</h4>");
+		session.removeAttribute("error");
+		}
+		%>
     </div>
 </body>
 </html>

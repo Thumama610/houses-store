@@ -1,7 +1,6 @@
 package com.thumama;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -32,7 +31,6 @@ public class LogIn extends HttpServlet {
 				response.sendRedirect("Main.jsp");
 			}
 			else{
-				PrintWriter pw = response.getWriter();
 				hs.setAttribute("error", "please check your username or password!!");
 				response.sendRedirect("LogIn.jsp");
 			}

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="Main.css">
+<link rel="stylesheet" href="main.css">
 </head>
 <body>
 <%
@@ -26,11 +26,11 @@ if (session.getAttribute("username") == null){
         </div>
 </nav>
 <div class = "info">
-<label for="fname">First Name: <%if(session.getAttribute("username")!= null){out.append(MembersDao.getFirstName(session.getAttribute("username").toString()));}; %></label>
-<label for="fname">Last Name: <%if(session.getAttribute("username")!= null){out.append(MembersDao.getLastName(session.getAttribute("username").toString()));}; %></label>
-<label for="fname">Email: <%if(session.getAttribute("username")!= null){out.append(MembersDao.getEmail(session.getAttribute("username").toString()));}; %></label>
-<label for="fname">Phone: <%if(session.getAttribute("username")!= null){out.append(MembersDao.getPhone(session.getAttribute("username").toString()));}; %></label>
-<label for="fname">city: <%if(session.getAttribute("username")!= null){out.append(MembersDao.getCity(session.getAttribute("username").toString()));}; %></label>
+<label for="fname" class = "profileInfo">First Name: <%if(session.getAttribute("username")!= null){out.append(MembersDao.getFirstName(session.getAttribute("username").toString()));}; %></label>
+<label for="fname" class = "profileInfo">Last Name: <%if(session.getAttribute("username")!= null){out.append(MembersDao.getLastName(session.getAttribute("username").toString()));}; %></label>
+<label for="fname" class = "profileInfo">Email: <%if(session.getAttribute("username")!= null){out.append(MembersDao.getEmail(session.getAttribute("username").toString()));}; %></label>
+<label for="fname" class = "profileInfo">Phone: <%if(session.getAttribute("username")!= null){out.append(MembersDao.getPhone(session.getAttribute("username").toString()));}; %></label>
+<label for="fname" class = "profileInfo">city: <%if(session.getAttribute("username")!= null){out.append(MembersDao.getCity(session.getAttribute("username").toString()));}; %></label>
 </div>
 </body>
 </html>

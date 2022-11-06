@@ -10,7 +10,6 @@ public class Member {
 	private String city;
 	private String username;
 	private String password;
-	private int id;
 	
 	public Member(String username,String password) {
 		super();

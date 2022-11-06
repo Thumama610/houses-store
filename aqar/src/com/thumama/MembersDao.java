@@ -112,4 +112,17 @@ public class MembersDao {
 		connection.close();
 		return id;
 	}
+	public static boolean checkUsername(String str) throws ClassNotFoundException, SQLException{
+		boolean checker = false;
+		Class.forName(driver);
+		Connection connection = DriverManager.getConnection(url,username,password);
+		PreparedStatement ps = connection.prepareStatement("select username from members where username = ?");
+		ps.setNString(1, str);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()){
+				checker = true;
+		}
+		connection.close();
+		return checker;
+	}
 }

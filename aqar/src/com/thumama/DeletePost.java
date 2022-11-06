@@ -1,27 +1,38 @@
 package com.thumama;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/LogOut")
-public class LogOut extends HttpServlet {
+
+@WebServlet("/DeletePost")
+public class DeletePost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public LogOut() {
+    public DeletePost() {
         super();
     }
 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.removeAttribute("username");
-		session.removeAttribute("id");
-		response.sendRedirect("LogIn.jsp");
-	}
+		int postId = Integer.parseInt(request.getParameter("postId"));
+		if (postId == 0) {
+			response.sendRedirect("Main.jsp");
+		}
+		else{
+		try {
+			HousesDao.deletePost(postId);
+			response.sendRedirect("Main.jsp");
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		}
+		}
 
 }
