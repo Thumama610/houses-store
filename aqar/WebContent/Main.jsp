@@ -64,6 +64,10 @@ if (session.getAttribute("username") == null){
 						+"<input type=\"hidden\" name=\"postId\" value=\""+postId+"\" id = \"hidden\">"
 						+"<input type=\"submit\" value = \"delete\" onclick = \"check()\" >"
 						+"</form>");
+				sb.append("<form action=\"EditPost\" class = \"delete\">"
+						+"<input type=\"hidden\" name=\"postId\" value=\""+postId+"\" id = \"hidden\">"
+						+"<input type=\"submit\" value = \"edit\">"
+						+"</form>");
 					};
 					sb.append("</div>"
 							+"</div>");

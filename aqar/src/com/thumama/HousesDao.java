@@ -121,4 +121,35 @@ public class HousesDao {
 		ps.executeUpdate();
 		connection.close();
 	}
+	public static boolean checkHouse(int id) throws ClassNotFoundException, SQLException{
+		boolean exists = false;
+		Class.forName(driver);
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/aqar_members","root","");
+		PreparedStatement ps = connection.prepareStatement("select * from houses where id = ?");
+		ps.setInt(1, id);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()){
+			exists = true;
+		}
+		connection.close();
+		return exists;
+	}
+	public static void editHouse(int id,House house) throws ClassNotFoundException, SQLException{
+		Class.forName(driver);
+		Connection connection = DriverManager.getConnection(url,username,password);
+		PreparedStatement ps = connection.prepareStatement("UPDATE `houses` SET `type`=?"
+				+ ",`size`=?,`location`=?,`rooms`=?,`bathrooms`=?,`floor`=?"
+				+ ",`price`=?,`img_url`=? WHERE id = ?");
+		ps.setNString(1, house.getType());
+		ps.setInt(2, house.getSize());
+		ps.setNString(3, house.getLocation());
+		ps.setInt(4, house.getRooms());
+		ps.setInt(5, house.getBathrooms());
+		ps.setInt(6, house.getFloor());
+		ps.setInt(7, house.getPrice());
+		ps.setNString(8, house.getImg_url());
+		ps.setInt(9, id);
+		ps.executeUpdate();
+		connection.close();
+	}
 }

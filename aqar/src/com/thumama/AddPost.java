@@ -22,7 +22,11 @@ public class AddPost extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int houseId = 0;
 		HttpSession hs = request.getSession();
+		if(hs.getAttribute("houseId")!= null){
+			houseId = (int) hs.getAttribute("houseId");
+		}
 		int publisher_id = (int) hs.getAttribute("id");
 		String type = request.getParameter("type");
 		int size = Integer.parseInt(request.getParameter("size"));
@@ -34,10 +38,19 @@ public class AddPost extends HttpServlet {
 		String img_url = request.getParameter("image");
 		House house = new House(publisher_id,type,size,location,rooms,bathrooms,floor,price,img_url);
 		try {
-			HousesDao.addHouse(house);
-			response.sendRedirect("Main.jsp");
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			if(HousesDao.checkHouse(houseId))
+			{
+				HousesDao.editHouse(houseId, house);
+				response.sendRedirect("Main.jsp");
+			}
+			else
+			{
+				HousesDao.addHouse(house);
+				response.sendRedirect("Main.jsp");
+			}
+		} catch (ClassNotFoundException | SQLException e1) {
+			
+			e1.printStackTrace();
 		}
 	}
 
